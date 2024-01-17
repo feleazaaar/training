@@ -237,10 +237,9 @@
 
     function setTardy(day) {
         tardy_period = 10; // Minutes
-
         from = $('#' + day + '-from').val();
         tardy = moment.utc(from, 'HH:mm').add(tardy_period, 'minutes').format('HH:mm');
-        $('#' + day + '-tardy').val(tardy);
+        from ? $('#' + day + '-tardy').val(tardy) : $('#' + day + '-tardy').val('');
     }
 
     function setTardys(day, row) {
@@ -248,7 +247,7 @@
 
         from = $('#' + day + '-from-' + row).val();
         tardy = moment.utc(from, 'HH:mm').add(tardy_period, 'minutes').format('HH:mm');
-        $('#' + day + '-tardy-' + row).val(tardy);
+        from ? $('#' + day + '-tardy-' + row).val(tardy) : $('#' + day + '-tardy-' + row).val('');
     }
 
     function setAbsentUnderTime(day) {
@@ -257,7 +256,7 @@
         to = $('#' + day + '-to').val();
         $('#' + day + '-absent').val(to);
         under_time = moment.utc(to, 'HH:mm').subtract(under_time_period, 'hour').format('HH:mm');
-        $('#' + day + '-under-time').val(under_time);
+        to ? $('#' + day + '-under-time').val(under_time) : $('#' + day + '-under-time').val('');
     }
 
     function setAbsentUnderTimes(day, row) {
@@ -266,7 +265,7 @@
         to = $('#' + day + '-to-' + row).val();
         $('#' + day + '-absent-' + row).val(to);
         under_time = moment.utc(to, 'HH:mm').subtract(under_time_period, 'hour').format('HH:mm');
-        $('#' + day + '-under-time-' + row).val(under_time);
+        to ? $('#' + day + '-under-time-' + row).val(under_time) : $('#' + day + '-under-time-' + row).val('');
     }
 
     function saveSchedule() {

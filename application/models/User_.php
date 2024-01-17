@@ -107,10 +107,10 @@ class User_ extends CI_Model
         // $this->db->order_by('time_in', 'desc');
         // $query = $this->db->get();
 
-        $where_clause = "";
+        $where_clause = " AND user.id = {$_SESSION['user_id']} ";
 
-        $from != "" ? $where_clause .= "AND time_in >= '" . $from . " 00:00:00' " : "";
-        $to != "" ? $where_clause .= "AND time_in <= '" . $to . " 00:00:00' " : "";
+        $from != "" ? $where_clause .= " AND time_in >= '" . $from . " 00:00:00' " : "";
+        $to != "" ? $where_clause .= " AND time_in <= '" . $to . " 00:00:00' " : "";
 
         $query = $this->db->query("SELECT * FROM user_data
             INNER JOIN user ON user.id = user_data.user_id
